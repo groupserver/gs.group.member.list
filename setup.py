@@ -32,6 +32,7 @@ setup(name='gs.group.member.list',
     zip_safe=False,
     install_requires=[
         'setuptools',
+        'gs.group.base',
         'gs.group.member.base',
         # -*- Extra requirements: -*-
     ],

@@ -4,4 +4,11 @@
   xmlns:five="http://namespaces.zope.org/five"
   i18n_domain="groupserver">
 
+  <browser:page 
+    for="Products.XWFChat.interfaces.IGSGroupFolder"
+    name="members.html"
+    class="gs.group.base.page.GroupPage"
+    template="browser/templates/members.pt"
+    permission="zope2.View"/>
+
 </configure>

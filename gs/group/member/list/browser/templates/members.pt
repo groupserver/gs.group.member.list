@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  metal:use-macro="context/@@groupserver_layout/page">
+  <head>
+    <title metal:fill-slot="title">Members:
+      <span tal:replace="string:${view/groupInfo/name}: ${view/siteInfo/name}"/>
+    </title>
+    <!--TODO: Metadata-->
+  </head>
+  <body>
+    <tal:block metal:fill-slot="body">
+      <div id="group-intro">
+        <h1>Members</h1>
+    </tal:block>
+  </body>
+</html>
+
