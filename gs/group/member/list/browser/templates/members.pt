@@ -16,6 +16,9 @@
       li.vcard img {
         height: 2.78em;
       }
+      .vcard li {
+        list-style: none;
+      }
     </style>
     <!--TODO: Metadata-->
   </head>
