@@ -6,12 +6,28 @@
     <title metal:fill-slot="title">Members:
       <span tal:replace="string:${view/groupInfo/name}: ${view/siteInfo/name}"/>
     </title>
+    <style type="text/css" metal:fill-slot="style">
+      li.vcard {
+        display: inline-block;
+        width: 23.63em; /*17u*/
+        height: 2.78em; /* 2u*/
+        margin: 1.39em;
+      }
+      li.vcard img {
+        height: 2.78em;
+      }
+    </style>
     <!--TODO: Metadata-->
   </head>
   <body>
     <tal:block metal:fill-slot="body">
       <div id="group-intro">
         <h1>Members</h1>
+        <p
+          tal:replace="structure provider:groupserver.MembersList">
+          The member tabs.
+        </p>
+
     </tal:block>
   </body>
 </html>

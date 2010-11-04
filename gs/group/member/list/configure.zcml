@@ -4,6 +4,23 @@
   xmlns:five="http://namespaces.zope.org/five"
   i18n_domain="groupserver">
 
+  <interface interface=".interfaces.IMemberList" />
+  <browser:viewletManager
+    name="groupserver.MembersList"
+    permission="zope2.View"
+    provides=".interfaces.IMemberList"
+    class="gs.viewlet.manager.WeightOrderedViewletManager"
+    template="browser/templates/infotabs.pt"/>
+  <!--TODO: figure out how to share tab-templates -->
+
+  <browser:viewlet name="gs-group-home-members"
+    manager=".interfaces.IMemberList"
+    template="browser/templates/memberslist.pt"
+    class=".members.SimpleMemberList"
+    permission="zope2.View"
+    weight="1"
+    title="Members" />
+
   <browser:page 
     for="Products.XWFChat.interfaces.IGSGroupFolder"
     name="members.html"

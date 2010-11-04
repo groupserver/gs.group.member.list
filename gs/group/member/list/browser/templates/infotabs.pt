@@ -1,0 +1,15 @@
+<div id="info-tabs" class="tabs">
+  <ul>
+    <tal:block repeat="viewlet options/viewlets">
+      <li>
+        <a href="#" tal:attributes="href string:#info-tab-${repeat/viewlet/index}"
+          tal:content="viewlet/title">Tab Text</a>
+      </li>
+    </tal:block>
+  </ul>
+  <tal:block repeat="viewlet options/viewlets">
+    <div class="tab" tal:attributes="id string:info-tab-${repeat/viewlet/index}" 
+      tal:content="structure viewlet/render">Tab Content</div><!--tab-->
+  </tal:block>
+</div><!--info-tabs-->
+

@@ -1,0 +1,31 @@
+<div>
+  <div id="adminMembers">
+    <h2>Administrators</h2>
+    <ul>
+      <tal:block repeat="member view/managers">
+        <li class="vcard">
+          <tal:block define="user member/user"
+            replace="structure provider:groupserver.UserImage">
+            A photo
+          </tal:block>
+          <a href="#" class="fn url" tal:content="member/name"
+            tal:attributes="href member/url">A member</a></li>
+      </tal:block>
+    </ul>
+  </div>  
+  <div id="normalMembers">
+    <h2>Normal Members</h2>
+    <ul>
+      <tal:block repeat="member view/normalMembers">
+        <li class="vcard">
+          <tal:block define="user member/user"
+            replace="structure provider:groupserver.UserImage">
+            A photo
+          </tal:block>
+          <a href="#" class="fn url" tal:content="member/name"
+            tal:attributes="href member/url">A member</a></li>
+      </tal:block>
+    </ul>
+  </div><!--normalMembers-->
+</div>
+
