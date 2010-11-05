@@ -18,8 +18,15 @@
     template="browser/templates/memberslist.pt"
     class=".members.SimpleMemberList"
     permission="zope2.View"
+    weight="2"
+    title="All Members" />
+  <browser:viewlet name="gs-group-home-posting-members"
+    manager=".interfaces.IMemberList"
+    template="browser/templates/postingmemberslist.pt"
+    class=".postingmembers.PostingMemberList"
+    permission="zope2.View"
     weight="1"
-    title="Members" />
+    title="Posting Members" />
 
   <browser:page 
     for="Products.XWFChat.interfaces.IGSGroupFolder"

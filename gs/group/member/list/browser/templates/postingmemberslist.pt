@@ -1,0 +1,41 @@
+<div>
+  <div id="recentPosting">
+    <h2>Members who Recently Posted</h2>
+    <ul>
+      <tal:block repeat="member view/recentPostingMembers">
+        <li class="vcard">
+          <tal:block define="user member/user"
+            replace="structure provider:groupserver.UserImage">
+            A photo
+          </tal:block>
+          <ul>
+            <li><a href="#" class="fn url" tal:content="member/name"
+                  tal:attributes="href member/url">A member</a></li>
+          </ul>
+        </li>
+      </tal:block>
+    </ul>
+  </div>
+  <div id="recentPosting">
+    <h2>Members who Post the Most</h2>
+    <ul>
+      <tal:block repeat="member view/topPostingMembers">
+        <li class="vcard">
+          <tal:block define="user member/user"
+            replace="structure provider:groupserver.UserImage">
+            A photo
+          </tal:block>
+          <ul>
+            <li><a href="#" class="fn url" tal:content="member/name"
+                  tal:attributes="href member/url">A member</a></li>
+            <li>
+              <a tal:attributes="href member/searchUrl"
+                href="#"><strong><span class="val" tal:content="member/nPosts">n</span>
+                posts</strong></a></li>
+          </ul>
+        </li>
+      </tal:block>
+    </ul>
+  </div>
+</div>
+
