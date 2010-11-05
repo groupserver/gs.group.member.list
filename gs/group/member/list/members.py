@@ -20,7 +20,6 @@ class SimpleMemberList(object):
         self.ptnCoach = members.ptnCoach
         
         self.admins = [a for a in self.managers + [self.ptnCoach] if a]
-        print self.admins
         self.admins.sort(key=l)
 
         # TODO: do this in GSGroupMembersInfo
