@@ -6,20 +6,24 @@
     <title metal:fill-slot="title">Members:
       <span tal:replace="string:${view/groupInfo/name}: ${view/siteInfo/name}"/>
     </title>
-    <style type="text/css" metal:fill-slot="style">
-      li.vcard {
-        display: inline-block;
-        width: 23.63em; /*17u*/
-        height: 2.78em; /* 2u*/
-        margin: 1.39em;
-      }
-      li.vcard img {
-        height: 2.78em;
-      }
-      .vcard li {
-        list-style: none;
-      }
-    </style>
+    <tal:block metal:fill-slot="style">
+      <link rel="stylesheet" type="text/css" 
+        href="/++resource++jquery-ui-1.8.5-css/ui-lightness/jquery-ui-1.8.5.custom.css" />
+      <style type="text/css">
+        li.vcard {
+          display: inline-block;
+          width: 18.07em; /*13u*/
+          height: 2.78em; /* 2u*/
+          margin: 1.39em;
+        }
+        li.vcard img {
+          height: 2.78em;
+        }
+        .vcard li {
+          list-style: none;
+        }
+      </style>
+    </tal:block>
     <!--TODO: Metadata-->
   </head>
   <body>
@@ -30,6 +34,17 @@
           tal:replace="structure provider:groupserver.MembersList">
           The member tabs.
         </p>
+
+    </tal:block>
+    <tal:block metal:fill-slot="javascript">
+      <script src="/++resource++jquery-ui-1.7.2.custom.min.js" 
+        type="text/javascript">&#160;</script>
+      <script type="text/javascript">
+        jQuery.noConflict()
+        jQuery(document).ready( function () {
+          jQuery("#info-tabs").tabs();
+        });
+      </script>        
 
     </tal:block>
   </body>
