@@ -4,10 +4,12 @@
     <ul>
       <tal:block repeat="member view/recentPostingMembers">
         <li class="vcard">
-          <tal:block define="user member/user"
-            replace="structure provider:groupserver.UserImage">
-            A photo
-          </tal:block>
+          <a href="#" tal:attributes="href member/url" class="photo">
+            <tal:block define="user member/user"
+              replace="structure provider:groupserver.UserImage">
+              A photo
+            </tal:block>
+          </a>
           <ul>
             <li><a href="#" class="fn url" tal:content="member/name"
                   tal:attributes="href member/url">A member</a></li>
@@ -21,10 +23,12 @@
     <ul>
       <tal:block repeat="member view/topPostingMembers">
         <li class="vcard">
-          <tal:block define="user member/user"
-            replace="structure provider:groupserver.UserImage">
-            A photo
-          </tal:block>
+          <a href="#" tal:attributes="href member/url" class="photo">
+            <tal:block define="user member/user"
+              replace="structure provider:groupserver.UserImage">
+              A photo
+            </tal:block>
+          </a>
           <ul>
             <li><a href="#" class="fn url" tal:content="member/name"
                   tal:attributes="href member/url">A member</a></li>

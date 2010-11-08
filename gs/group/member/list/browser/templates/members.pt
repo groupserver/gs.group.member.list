@@ -22,6 +22,16 @@
         .vcard li {
           list-style: none;
         }
+        a.photo {
+          width:  2.08em;  /* 1.5u */
+          height: 2.78em; /* 2.0u */
+          display: inline-block;
+          float: left;
+          background: #999999;
+        }
+        .vcard ul {
+          margin-left: 2.78em;
+        }
       </style>
     </tal:block>
     <!--TODO: Metadata-->
