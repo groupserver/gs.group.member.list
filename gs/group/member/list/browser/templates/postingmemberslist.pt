@@ -1,4 +1,5 @@
-<div>
+<div tal:define="munge_date python:modules['Products.XWFCore.XWFUtils'].munge_date;
+  ctx view/context">
   <div id="recentPosting">
     <h2>Members who Recently Posted</h2>
     <ul>
@@ -11,8 +12,15 @@
             </tal:block>
           </a>
           <ul>
-            <li><a href="#" class="fn url" tal:content="member/name"
-                  tal:attributes="href member/url">A member</a></li>
+            <li><a class="url" tal:attributes="href member/url"
+                 href="#"><strong tal:content="member/name"
+                  class="fn" >A member</strong></a>
+            </li>
+            <li>Posted 
+              <a href="#" class="date published"
+                tal:attributes="href member/postUrl"
+                tal:define="d member/latestPost/date"
+                tal:content="python:munge_date(ctx, d)">Date</a></li>
           </ul>
         </li>
       </tal:block>
@@ -30,12 +38,14 @@
             </tal:block>
           </a>
           <ul>
-            <li><a href="#" class="fn url" tal:content="member/name"
-                  tal:attributes="href member/url">A member</a></li>
+            <li><a class="url" tal:attributes="href member/url"
+                 href="#"><strong tal:content="member/name"
+                  class="fn" >A member</strong></a>
+            </li>
             <li>
               <a tal:attributes="href member/searchUrl"
-                href="#"><strong><span class="val" tal:content="member/nPosts">n</span>
-                posts</strong></a></li>
+                href="#"><span class="val" tal:content="member/nPosts">n</span>
+                posts</a></li>
           </ul>
         </li>
       </tal:block>
