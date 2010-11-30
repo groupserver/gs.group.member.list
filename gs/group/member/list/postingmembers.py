@@ -2,21 +2,15 @@
 from urllib import urlencode
 from zope.component import createObject
 from Products.GSSearch.queries import MessageQuery
+from gs.group.home.simpletab import PublicTab
 from queries import MembersQuery
 
-class PostingMemberList(object):
+class PostingMemberList(PublicTab):
     def __init__(self, context, request, view, manager):
         # TODO: move core code to gs.group.base
-        self.context = context
-        self.request = request
-        self.__parent__ = view
-        self.siteInfo = createObject('groupserver.SiteInfo', context)
-        self.groupInfo = createObject('groupserver.GroupInfo', context)
+        PublicTab.__init__(self, context, request, view, manager)
         self.recentPostingMembers = []
         self.topPostingMembers = []
-
-    # TODO: Fix
-    viewTopics = True
 
     def update(self):
         if self.viewTopics:

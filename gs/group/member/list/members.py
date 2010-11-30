@@ -1,14 +1,11 @@
 # coding=utf-8
 from zope.component import createObject
 from Products.GSGroupMember.groupMembersInfo import GSGroupMembersInfo
+from gs.group.home.simpletab import MemberOnlyTab
 
-class SimpleMemberList(object):
+class SimpleMemberList(MemberOnlyTab):
     def __init__(self, context, request, view, manager):
-        self.context = context
-        self.request = request
-        self.__parent__ = view
-        self.siteInfo = createObject('groupserver.SiteInfo', context)
-        self.groupInfo = createObject('groupserver.GroupInfo', context)
+        MemberOnlyTab.__init__(self, context, request, view, manager)
 
     def update(self):
         members = GSGroupMembersInfo(self.context)
