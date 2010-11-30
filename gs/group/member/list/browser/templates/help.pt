@@ -1,0 +1,46 @@
+<div id="gs-group-members-list">
+  <h2>Viewing the Group Members</h2>
+  <p>
+    There are two ways to view a list of group 
+  </p>
+  <div id="gs-group-members-list-posting">
+    <h3>Viewing the Posting Members</h3>
+    <p>
+    </p>
+  </div><!--gs-group-members-list-posting-->
+  <div id="gs-group-members-list-all">
+    <h3>Viewing the All Members</h3>
+    <p>
+      You can view all members of a group if
+      <!--TODO: Link to the right place-->
+      The group is <strong>Private</strong> or 
+      <strong>Secret</strong>, andy ou are a member of the group.
+    </p>
+    <p>
+      To view the list of all group members carry out the following.
+    </p>
+    <ol>
+      <li>Visit the Members page for the group.</li>
+      <li>Click on the <samp class="tab">All Members</samp> tab.</li>
+    </ol>
+    <p>
+      The list if members will be shown, broken down into three 
+      sections.
+      In the first section the group administrators are listed.
+      These people administer the group and its members.
+      Next all the normal members are listed.
+      All the normal members (and the administrators) can view any post
+      you make to the group.
+      Finally, the people who the administrators have invited to join
+      the group are listed.
+      These people will be able to view your posts in the future.
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+  </div><!--gs-group-members-list-all-->
+</div><!--gs-group-members-list-->
+

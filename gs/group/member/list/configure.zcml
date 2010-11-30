@@ -34,5 +34,12 @@
     class="gs.group.base.page.GroupPage"
     template="browser/templates/members.pt"
     permission="zope2.View"/>
+    
+  <!--help-->
+  <browser:viewlet name="gs-group-members-list-help"
+    manager="gs.help.interfaces.IUserHelp"
+    template="browser/templates/help.pt"
+    permission="zope2.Public"
+    weight="4" />
 
 </configure>
