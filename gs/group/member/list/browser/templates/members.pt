@@ -6,46 +6,16 @@
     <title metal:fill-slot="title">Members:
       <span tal:replace="string:${view/groupInfo/name}: ${view/siteInfo/name}"/>
     </title>
-    <tal:block metal:fill-slot="style">
-      <link rel="stylesheet" type="text/css" 
-        href="/++resource++jquery-ui-1.8.5-css/ui-lightness/jquery-ui-1.8.5.custom.css" />
-      <style type="text/css">
-        li.vcard {
-          display: inline-block;
-          width: 18.07em; /*13u*/
-          height: 2.78em; /* 2u*/
-          margin: 1.39em;
-        }
-        li.vcard img {
-          height: 2.78em;
-        }
-        .vcard li {
-          list-style: none;
-        }
-        a.photo {
-          width:  2.08em;  /* 1.5u */
-          height: 2.78em; /* 2.0u */
-          display: inline-block;
-          float: left;
-          background: #999999;
-        }
-        .vcard ul {
-          margin-left: 2.78em;
-        }
-      </style>
-    </tal:block>
     <!--TODO: Metadata-->
   </head>
   <body>
-    <tal:block metal:fill-slot="body">
-      <div id="group-intro">
-        <h1>Members</h1>
-        <p
-          tal:replace="structure provider:groupserver.MembersList">
-          The member tabs.
-        </p>
-
-    </tal:block>
+    <div metal:fill-slot="body" id="gs-group-member-list">
+      <h1>Members</h1>
+      <p
+        tal:replace="structure provider:groupserver.MembersList">
+        The member tabs.
+      </p>
+    </div><!--gs-group-member-list-->
     <tal:block metal:fill-slot="javascript">
       <script src="/++resource++jquery-ui-1.7.2.custom.min.js" 
         type="text/javascript">&#160;</script>
