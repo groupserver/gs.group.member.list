@@ -17,7 +17,7 @@
       </p>
     </div><!--gs-group-member-list-->
     <tal:block metal:fill-slot="javascript">
-      <script src="/++resource++jquery-ui-1.7.2.custom.min.js" 
+      <script src="/++resource++jquery-ui-1.8.9.custom.min.js" 
         type="text/javascript">&#160;</script>
       <script type="text/javascript">
         jQuery.noConflict()
