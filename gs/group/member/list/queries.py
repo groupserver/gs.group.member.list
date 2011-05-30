@@ -51,6 +51,7 @@ class MembersQuery(object):
         s = sa.select(cols)
         s.append_whereclause(pt.c.group_id == groupId)
         s.append_whereclause(pt.c.site_id == siteId)
+        s.append_whereclause(pt.c.hidden == None)
         s.group_by(pt.c.user_id)
         s.order_by(sa.desc('post_count'))
         s.limit = limit
