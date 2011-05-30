@@ -1,6 +1,6 @@
 <div tal:define="munge_date python:modules['Products.XWFCore.XWFUtils'].munge_date;
   ctx view/context">
-  <div id="recentPosting">
+  <div id="recentPosting" tal:condition="view/recentPostingMembers">
     <h2>Members who Recently Posted</h2>
     <ul>
       <tal:block repeat="member view/recentPostingMembers">
@@ -25,8 +25,8 @@
         </li>
       </tal:block>
     </ul>
-  </div>
-  <div id="recentPosting">
+  </div><!--recentPosting-->
+  <div id="topPosting" tal:condition="view/topPostingMembers">
     <h2>Members who Post the Most</h2>
     <ul>
       <tal:block repeat="member view/topPostingMembers">
@@ -50,6 +50,14 @@
         </li>
       </tal:block>
     </ul>
-  </div>
+  </div><!--topPosting-->
+  <div id="no-post">
+    <p>
+      No member of 
+      <span class="group"
+        tal:content="view/groupInfo/name">this group</span>
+      has made a post.
+    </p>
+  </div><!--no-post-->
 </div>
 
