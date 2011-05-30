@@ -17,6 +17,8 @@ class MembersQuery(object):
         #   SELECT DISTINCT ON (user_id) user_id, date
         #    FROM post
         #      WHERE group_id = 'development'
+        #       AND site_id = 'groupserver'
+        #       AND hidden is NULL
         #     ORDER BY user_id, date DESC) AS something
         # ORDER BY distinct_date DESC
         # LIMIT 5;
@@ -27,6 +29,7 @@ class MembersQuery(object):
         s1 = sa.select([pt.c.user_id, pt.c.date], distinct=pt.c.user_id)
         s1.append_whereclause(pt.c.group_id == groupId)
         s1.append_whereclause(pt.c.site_id == siteId)
+        s1.append_whereclause(pt.c.hidden == None)
         s1.order_by(pt.c.user_id, sa.desc(pt.c.date))
         # We alias the inner query (this is the "AS something" part).
         ss = s1.alias('ss')

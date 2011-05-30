@@ -43,9 +43,11 @@ class RecentPostingUser(object):
         
         mq = MessageQuery(context, context.zsqlalchemy)
         t = createObject('groupserver.SearchTextTokens', '')
-        self.latestPost = mq.post_search_keyword(t, siteInfo.id,  
-                                                 [groupInfo.id], 
-                                                 [userInfo.id], 1)[0]
+        posts = mq.post_search_keyword(t, siteInfo.id, [groupInfo.id], 
+                                       [userInfo.id], 1)
+        assert posts, 'No posts for "%s" in %s (%s)' % \
+          (uid, groupInfo.name, groupInfo.id)
+        self.latestPost = posts[0]
 
         self.postUrl = '/r/post/%s' % self.latestPost['post_id']
         
