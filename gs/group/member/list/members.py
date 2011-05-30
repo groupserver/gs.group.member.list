@@ -1,11 +1,15 @@
 # coding=utf-8
-from zope.component import createObject
+from zope.cachedescriptors.property import Lazy
 from Products.GSGroupMember.groupMembersInfo import GSGroupMembersInfo
-from gs.group.home.simpletab import MemberOnlyTab
+from gs.group.member.base.viewlet import MemberViewlet
 
-class SimpleMemberList(MemberOnlyTab):
+class SimpleMemberList(MemberViewlet):
     def __init__(self, context, request, view, manager):
-        MemberOnlyTab.__init__(self, context, request, view, manager)
+        MemberViewlet.__init__(self, context, request, view, manager)
+
+    @Lazy
+    def show(self):
+        return self.isMember
 
     def update(self):
         members = GSGroupMembersInfo(self.context)
@@ -13,9 +17,8 @@ class SimpleMemberList(MemberOnlyTab):
 
         # Create a handy function to curry createObject
         self.managers = members.managers
-        
         self.ptnCoach = members.ptnCoach
-        
+
         self.admins = [a for a in self.managers + [self.ptnCoach] if a]
         self.admins.sort(key=l)
 

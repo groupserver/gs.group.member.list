@@ -2,13 +2,12 @@
 from urllib import urlencode
 from zope.component import createObject
 from Products.GSSearch.queries import MessageQuery
-from gs.group.home.simpletab import PublicTab
+from gs.group.member.base.viewlet import MemberViewlet
 from queries import MembersQuery
 
-class PostingMemberList(PublicTab):
+class PostingMemberList(MemberViewlet):
     def __init__(self, context, request, view, manager):
-        # TODO: move core code to gs.group.base
-        PublicTab.__init__(self, context, request, view, manager)
+        MemberViewlet.__init__(self, context, request, view, manager)
         self.recentPostingMembers = []
         self.topPostingMembers = []
 
