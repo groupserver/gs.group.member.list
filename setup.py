@@ -32,11 +32,14 @@ setup(name='gs.group.member.list',
     zip_safe=False,
     install_requires=[
         'setuptools',
-        'gs.help',
         'gs.group.base',
         'gs.group.member.base',
+        'gs.group.messages.post',
+        'gs.help',
+        'gs.viewlet',
+        'Products.GSGroupMember',
+        'Products.GSSearch',
         'Products.XWFCore',
-        'Products.XWFMailingListManager',
         # -*- Extra requirements: -*-
     ],
     entry_points="""
