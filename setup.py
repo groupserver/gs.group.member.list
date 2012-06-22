@@ -32,6 +32,7 @@ setup(name='gs.group.member.list',
     zip_safe=False,
     install_requires=[
         'setuptools',
+        'gs.database',
         'gs.group.base',
         'gs.group.member.base',
         'gs.group.messages.post',

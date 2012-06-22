@@ -18,7 +18,7 @@ class PostingMemberList(MemberViewlet):
             self.update_top_posting_members()
 
     def update_recent_posting_members(self):
-        mq = MembersQuery(self.context.zsqlalchemy)
+        mq = MembersQuery()
         ml = mq.posting_authors(self.siteInfo.id, self.groupInfo.id,
                                 limit=6)
         for uid in ml:
@@ -27,7 +27,7 @@ class PostingMemberList(MemberViewlet):
             self.recentPostingMembers.append(pu)
 
     def update_top_posting_members(self):
-        mq = MembersQuery(self.context.zsqlalchemy)
+        mq = MembersQuery()
         tm = mq.top_posting_authors(self.siteInfo.id, 
                                    self.groupInfo.id, limit=6)
         for m in tm:
@@ -40,7 +40,7 @@ class RecentPostingUser(object):
         userInfo =  createObject('groupserver.UserFromId', context, uid)
         self.userInfo = userInfo
         
-        mq = MessageQuery(context, context.zsqlalchemy)
+        mq = MessageQuery(context)
         t = createObject('groupserver.SearchTextTokens', '')
         posts = mq.post_search_keyword(t, siteInfo.id, [groupInfo.id], 
                                        [userInfo.id], 1)
