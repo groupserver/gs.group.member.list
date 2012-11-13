@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 import os
 from setuptools import setup, find_packages
 from version import get_version
@@ -32,6 +32,11 @@ setup(name='gs.group.member.list',
     zip_safe=False,
     install_requires=[
         'setuptools',
+        'sqlalchemy',
+        'zope.cachedescriptors',
+        'zope.component',
+        'zope.schema',
+        'zope.viewlet',
         'gs.database',
         'gs.group.base',
         'gs.group.member.base',
@@ -41,10 +46,8 @@ setup(name='gs.group.member.list',
         'Products.GSGroupMember',
         'Products.GSSearch',
         'Products.XWFCore',
-        # -*- Extra requirements: -*-
     ],
     entry_points="""
     # -*- Entry points: -*-
     """,
 )
-
