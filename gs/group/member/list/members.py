@@ -1,7 +1,8 @@
 # coding=utf-8
 from zope.cachedescriptors.property import Lazy
 from Products.GSGroupMember.groupMembersInfo import GSGroupMembersInfo
-from gs.group.member.base.viewlet import MemberViewlet
+from gs.group.member.viewlet import MemberViewlet
+
 
 class SimpleMemberList(MemberViewlet):
     def __init__(self, context, request, view, manager):
@@ -27,7 +28,6 @@ class SimpleMemberList(MemberViewlet):
         self.normalMembers = [m for m in members.fullMembers
                             if m.id not in skip]
         self.normalMembers.sort(key=l)
-        
+
         self.invitedMembers = members.invitedMembers
         self.invitedMembers.sort(key=l)
-
