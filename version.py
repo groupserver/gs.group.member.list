@@ -1,21 +1,24 @@
-version='2.0'
-release=False
+version = '2.0'
+release = False
 
-#-------------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------#
 
 import commands
 import datetime
 import os
 import glob
 
+
 class CommandError(Exception):
     pass
+
 
 def execute_command(commandstring):
     status, output = commands.getstatusoutput(commandstring)
     if status != 0:
         raise CommandError
     return output
+
 
 def parse_version_from_package():
     try:
@@ -35,6 +38,7 @@ def parse_version_from_package():
         version_string = version
 
     return version_string
+
 
 def get_version():
     try:
