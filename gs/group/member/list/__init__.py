@@ -1,2 +1,3 @@
 # -*- coding: utf-8 -*-
-from queries import MembersQuery  # lint:ok
+from __future__ import absolute_import
+from .queries import MembersQuery  # lint:ok
