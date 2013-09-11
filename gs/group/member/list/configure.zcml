@@ -16,7 +16,7 @@
     name="gs-group-home-posting-recent"
     manager=".interfaces.IMemberList"
     template="browser/templates/recent.pt"
-    class=".postingmembers.PostingMemberList"
+    class=".lists.ActiveMemberList"
     permission="zope2.View"
     weight="10"
     title="Recently active" />
@@ -24,7 +24,7 @@
     name="gs-group-home-posting-most"
     manager=".interfaces.IMemberList"
     template="browser/templates/most.pt"
-    class=".postingmembers.PostingMemberList"
+    class=".lists.MostActiveMemberList"
     permission="zope2.View"
     weight="20"
     title="Most active" />
@@ -32,7 +32,7 @@
     name="gs-group-home-members"
     manager=".interfaces.IMemberList"
     template="browser/templates/memberslist.pt"
-    class=".members.SimpleMemberList"
+    class=".lists.SimpleMemberList"
     permission="zope2.View"
     weight="50"
     title="All" />

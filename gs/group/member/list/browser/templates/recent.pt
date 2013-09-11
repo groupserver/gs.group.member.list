@@ -6,8 +6,8 @@
     <tal:block repeat="member view/recentPostingMembers">
       <li class="vcard">
         <a href="#" tal:attributes="href member/url" class="photo">
-          <tal:block define="user member/user"
-              replace="structure provider:groupserver.UserImage">
+          <tal:block define="user member/user; size string:40;"
+              replace="structure provider:groupserver.SquareUserImage">
             A photo
           </tal:block>
         </a>
