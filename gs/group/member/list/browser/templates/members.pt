@@ -1,14 +1,31 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html 
+  xmlns="http://www.w3.org/1999/xhtml"
   xmlns:tal="http://xml.zope.org/namespaces/tal"
   xmlns:metal="http://xml.zope.org/namespaces/metal"
-  metal:use-macro="context/@@groupserver_site_home_layout/page">
+  metal:use-macro="context/@@groupserver_layout/page">
   <head>
     <title metal:fill-slot="title">Members:
       <span tal:replace="string:${view/groupInfo/name}: ${view/siteInfo/name}"/>
     </title>
-    <!--TODO: Metadata-->
+    <link rel="up" href="#" metal:fill-slot="metadata"
+          tal:attributes="href view/groupInfo/relativeURL" />
   </head>
   <body>
+    <ul metal:fill-slot="breadcrumb">
+       <li><a tal:attributes="title string:${view/siteInfo/name} Homepage"
+             href="/" title="Home" class="icon-alone">
+          <span aria-hidden="true" data-icon="&#x2302;"></span>
+          <span class="screen-reader-text">Site home page</span>
+        </a>
+      </li>
+      <li>
+        <a class="group" 
+           tal:attributes="href string:${view/groupInfo/relativeURL}/">
+          <strong
+            tal:content="view/groupInfo/name">This group</strong></a>
+      </li>
+      <li>Members</li>
+    </ul>
     <div metal:fill-slot="body" id="gs-group-member-list">
       <h1>Members</h1>
       <p
@@ -16,17 +33,6 @@
         The member tabs.
       </p>
     </div><!--gs-group-member-list-->
-    <tal:block metal:fill-slot="javascript">
-      <script src="/++resource++jquery-ui-1.8.9.custom.min.js" 
-        type="text/javascript">&#160;</script>
-      <script type="text/javascript">
-        jQuery.noConflict()
-        jQuery(document).ready( function () {
-          jQuery("#info-tabs").tabs();
-        });
-      </script>        
-
-    </tal:block>
   </body>
 </html>
 
