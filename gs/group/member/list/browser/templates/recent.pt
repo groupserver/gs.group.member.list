@@ -16,13 +16,15 @@
                  href="#"><strong tal:content="member/name"
                                   class="fn" >A member</strong></a>
           </li>
-          <li>Posted 
-              <a href="#" class="date published"
-                 tal:attributes="href member/postUrl"
-                 tal:define="d member/latestPost/date"
-                 tal:content="python:munge_date(ctx, d)">Date</a></li>
+          <li class="muted small">
+              <a href="#"
+                 tal:attributes="href member/postUrl">Posted
+              <span class="date published"
+                    tal:define="d member/latestPost/date"
+                    tal:content="python:munge_date(ctx, d)">Date</span></a>
+          </li>
         </ul>
       </li>
     </tal:block>
   </ul>
-</div><!--recentPosting-->
+</div><!--gs-group-member-list-recent-->

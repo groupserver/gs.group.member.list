@@ -1,4 +1,4 @@
-<div id="gs-group-member-list-most" tal:condition="view/topPostingMembers">
+<div id="gs-group-member-list-most">
   <p class="muted">Members who have made the most posts</p>
   <ul>
     <tal:block repeat="member view/topPostingMembers">
@@ -14,7 +14,7 @@
                  href="#"><strong tal:content="member/name"
                                   class="fn" >A member</strong></a>
           </li>
-          <li>
+          <li class="muted small">
             <a tal:attributes="href member/searchUrl"
                href="#"><span class="val" tal:content="member/nPosts">n</span>
           posts</a></li>
