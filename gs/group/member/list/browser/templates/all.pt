@@ -1,0 +1,74 @@
+<tal:block>
+  <div id="gs-group-members-all-admins" role="region"
+       aria-labelledby="gs-group-members-all-admins-h">
+    <h2 id="gs-group-members-all-admins-h">Administrators</h2>
+    <ul>
+      <tal:block repeat="member view/admins">
+        <li class="vcard">
+            <a href="#" tal:attributes="href member/url" class="photo">
+              <tal:block define="user member/user; size string:40;"
+                         replace="structure provider:groupserver.SquareUserImage">
+                A photo
+              </tal:block>
+            </a>
+            <ul>
+              <li><a class="url" tal:attributes="href member/url"
+                     href="#"><strong tal:content="member/name"
+                                      class="fn" >A member</strong></a>
+              </li>
+              <li class="muted small"
+                  tal:content="python:(member in view.managers) and 'Group Administrator' or 'Participation Coach'">Batman</li>
+            </ul>
+        </li>
+      </tal:block>
+    </ul>
+  </div><!--gs-group-members-all-admins-->  
+  <div id="gs-group-members-all-normal" role="region"
+       aria-labelledby="gs-group-members-all-normal-h">
+    <h2 id="gs-group-members-all-normal-h">Normal members</h2>
+    <ul tal:condition="python:view.isMember or view.visibility.isPublic">
+      <tal:block repeat="member view/normalMembers">
+        <li class="vcard">
+          <a href="#" tal:attributes="href member/url" class="photo">
+            <tal:block define="user member/user"
+              replace="structure provider:groupserver.UserImage">
+              A photo
+            </tal:block>
+          </a>
+          <ul>
+            <li><a href="#" class="fn url" tal:content="member/name"
+              tal:attributes="href member/url">A member</a></li>
+          </ul>
+        </li>
+      </tal:block>
+    </ul>
+    <p tal:condition="python:not(view.isMember or view.visibility.isPublic)">
+      You must be logged in to see the list of normal group members.
+    </p>
+  </div><!--gs-group-members-all-normal-->
+  <div id="gs-group-members-all-invited" role="region"
+       aria-labelledby="gs-group-members-all-invited-h"
+       tal:condition="python:not(view.visibility.isPublic) and view.isMember">
+    <h2 id="gs-group-members-all-invited-h">Invited members</h2>
+    <p class="muted">
+      The people that are yet to respond to the invitation to join
+      <span class="group" tal:content="view/groupInfo/name">this group</span>.
+    </p>
+    <ul>
+      <tal:block repeat="member view/invitedMembers">
+        <li class="vcard">
+          <tal:block define="user member/user"
+                     replace="structure provider:groupserver.UserImage">
+            A photo
+          </tal:block>
+          <ul>
+            <li>
+              <a href="#" class="fn url" tal:content="member/name"
+                 tal:attributes="href member/url">A member</a>
+            </li>
+          </ul>
+        </li>
+      </tal:block>
+    </ul>
+  </div><!--gs-group-members-all-invited-->
+</tal:block>

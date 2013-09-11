@@ -15,6 +15,7 @@
 from __future__ import absolute_import
 from zope.cachedescriptors.property import Lazy
 from gs.group.member.viewlet import MemberViewlet
+from gs.group.privacy.interfaces import IGSGroupVisibility
 from Products.GSGroupMember.groupMembersInfo import GSGroupMembersInfo
 from .postingmembers import RecentPostingUser, TopPostingUser
 from .queries import MembersQuery
@@ -30,13 +31,19 @@ class PostingMemberList(MemberViewlet):
         return retval
 
 
-class SimpleMemberList(PostingMemberList):
+class AllMemberList(PostingMemberList):
     def __init__(self, group, request, view, manager):
-        super(SimpleMemberList, self).__init__(group, request, view, manager)
+        super(AllMemberList, self).__init__(group, request, view, manager)
+
+    @Lazy
+    def visibility(self):
+        retval = IGSGroupVisibility(self.groupInfo)
+        return retval
 
     @Lazy
     def show(self):
-        return self.isMember
+        retval = self.isMember or (not self.visibility.isSecret)
+        return retval
 
     def update(self):
         members = GSGroupMembersInfo(self.context)

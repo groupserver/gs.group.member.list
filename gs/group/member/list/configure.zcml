@@ -31,8 +31,8 @@
   <browser:viewlet 
     name="gs-group-home-members"
     manager=".interfaces.IMemberList"
-    template="browser/templates/memberslist.pt"
-    class=".lists.SimpleMemberList"
+    template="browser/templates/all.pt"
+    class=".lists.AllMemberList"
     permission="zope2.View"
     weight="50"
     title="All" />
