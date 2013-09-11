@@ -1,0 +1,28 @@
+<div id="gs-group-member-list-recent">
+  <p class="muted">Members who recently made a post</p>
+  <ul
+    tal:define="munge_date python:modules['Products.XWFCore.XWFUtils'].munge_date;
+                ctx view/context">
+    <tal:block repeat="member view/recentPostingMembers">
+      <li class="vcard">
+        <a href="#" tal:attributes="href member/url" class="photo">
+          <tal:block define="user member/user"
+              replace="structure provider:groupserver.UserImage">
+            A photo
+          </tal:block>
+        </a>
+        <ul>
+          <li><a class="url" tal:attributes="href member/url"
+                 href="#"><strong tal:content="member/name"
+                                  class="fn" >A member</strong></a>
+          </li>
+          <li>Posted 
+              <a href="#" class="date published"
+                 tal:attributes="href member/postUrl"
+                 tal:define="d member/latestPost/date"
+                 tal:content="python:munge_date(ctx, d)">Date</a></li>
+        </ul>
+      </li>
+    </tal:block>
+  </ul>
+</div><!--recentPosting-->

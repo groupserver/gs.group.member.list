@@ -1,0 +1,25 @@
+<div id="gs-group-member-list-most" tal:condition="view/topPostingMembers">
+  <p class="muted">Members who have made the most posts</p>
+  <ul>
+    <tal:block repeat="member view/topPostingMembers">
+      <li class="vcard">
+        <a href="#" tal:attributes="href member/url" class="photo">
+          <tal:block define="user member/user"
+                     replace="structure provider:groupserver.UserImage">
+            A photo
+          </tal:block>
+        </a>
+        <ul>
+          <li><a class="url" tal:attributes="href member/url"
+                 href="#"><strong tal:content="member/name"
+                                  class="fn" >A member</strong></a>
+          </li>
+          <li>
+            <a tal:attributes="href member/searchUrl"
+               href="#"><span class="val" tal:content="member/nPosts">n</span>
+          posts</a></li>
+        </ul>
+      </li>
+    </tal:block>
+  </ul>
+</div><!--gs-group-member-list-most-->

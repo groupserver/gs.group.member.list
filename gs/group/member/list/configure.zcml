@@ -13,21 +13,29 @@
   <!--TODO: figure out how to share tab-templates -->
 
   <browser:viewlet 
+    name="gs-group-home-posting-recent"
+    manager=".interfaces.IMemberList"
+    template="browser/templates/recent.pt"
+    class=".postingmembers.PostingMemberList"
+    permission="zope2.View"
+    weight="10"
+    title="Recently active" />
+  <browser:viewlet 
+    name="gs-group-home-posting-most"
+    manager=".interfaces.IMemberList"
+    template="browser/templates/most.pt"
+    class=".postingmembers.PostingMemberList"
+    permission="zope2.View"
+    weight="20"
+    title="Most active" />
+  <browser:viewlet 
     name="gs-group-home-members"
     manager=".interfaces.IMemberList"
     template="browser/templates/memberslist.pt"
     class=".members.SimpleMemberList"
     permission="zope2.View"
-    weight="2"
-    title="All Members" />
-  <browser:viewlet 
-    name="gs-group-home-posting-members"
-    manager=".interfaces.IMemberList"
-    template="browser/templates/postingmemberslist.pt"
-    class=".postingmembers.PostingMemberList"
-    permission="zope2.View"
-    weight="1"
-    title="Posting Members" />
+    weight="50"
+    title="All" />
 
   <browser:page 
     name="members.html"
