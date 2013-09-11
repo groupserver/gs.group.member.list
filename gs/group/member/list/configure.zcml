@@ -9,7 +9,7 @@
     permission="zope2.View"
     provides=".interfaces.IMemberList"
     class="gs.viewlet.manager.WeightOrderedViewletManager"
-    template="browser/templates/infotabs.pt"/>
+    template="browser/templates/tabs.pt"/>
   <!--TODO: figure out how to share tab-templates -->
 
   <browser:viewlet 
