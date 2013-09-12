@@ -12,10 +12,9 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-from __future__ import absolute_import
 import os
 from setuptools import setup, find_packages
-from .version import get_version
+from version import get_version
 
 version = get_version()
 
@@ -47,6 +46,7 @@ setup(name='gs.group.member.list',
     install_requires=[
         'setuptools',
         'sqlalchemy',
+        'zope.browserpage',
         'zope.cachedescriptors',
         'zope.component',
         'zope.schema',
