@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <configure xmlns="http://namespaces.zope.org/zope"
-  xmlns:browser="http://namespaces.zope.org/browser"
-  xmlns:five="http://namespaces.zope.org/five"
-  i18n_domain="groupserver">
+           xmlns:browser="http://namespaces.zope.org/browser"
+           i18n_domain="groupserver">
 
+  <browser:page 
+    name="members.html"
+    for="gs.group.base.interfaces.IGSGroupMarker"
+    class="gs.group.base.page.GroupPage"
+    template="browser/templates/members.pt"
+    permission="zope2.View"/>
+    
   <browser:viewletManager
     name="groupserver.MembersList"
-    permission="zope2.View"
+    for="gs.group.base.interfaces.IGSGroupMarker"
     provides=".interfaces.IMemberList"
     class="gs.viewlet.manager.WeightOrderedViewletManager"
-    template="browser/templates/tabs.pt"/>
+    template="browser/templates/tabs.pt"
+    permission="zope2.View" />
   <!--TODO: figure out how to share tab-templates -->
 
   <browser:viewlet 
@@ -36,14 +43,6 @@
     permission="zope2.View"
     weight="50"
     title="All" />
-
-  <browser:page 
-    name="members.html"
-    for="gs.group.base.interfaces.IGSGroupMarker"
-    class="gs.group.base.page.GroupPage"
-    template="browser/templates/members.pt"
-    permission="zope2.View"/>
-    
   <!--help-->
   <browser:viewlet 
     name="gs-group-members-list-help"
