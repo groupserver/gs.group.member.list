@@ -17,3 +17,7 @@ from zope.viewlet.interfaces import IViewletManager
 
 class IMemberList(IViewletManager):
     '''A viewlet manager for the list of group members.'''
+
+
+class IMemberListJavaScript(IViewletManager):
+    '''A viewlet manager for the JavaScript needed by the viewlets.'''

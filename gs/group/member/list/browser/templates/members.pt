@@ -33,6 +33,12 @@
         The member tabs.
       </p>
     </div><!--gs-group-member-list-->
+    <tal:block metal:fill-slot="javascript">
+      <div
+        tal:replace="structure provider:groupserver.MembersListJavaScript">
+        The JavaScript
+      </div>
+    </tal:block>
   </body>
 </html>
 

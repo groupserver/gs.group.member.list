@@ -19,6 +19,14 @@
     permission="zope2.View" />
   <!--TODO: figure out how to share tab-templates -->
 
+  <browser:viewletManager
+    name="groupserver.MembersListJavaScript"
+    for="gs.group.base.interfaces.IGSGroupMarker"
+    provides=".interfaces.IMemberListJavaScript"
+    class="gs.viewlet.manager.WeightOrderedViewletManager"
+    template="browser/templates/simplemanager.pt"
+    permission="zope2.View" />
+
   <browser:viewlet 
     name="gs-group-home-posting-recent"
     manager=".interfaces.IMemberList"
