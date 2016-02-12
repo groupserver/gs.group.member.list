@@ -21,8 +21,8 @@ version = get_version()
 setup(name='gs.group.member.list',
     version=version,
     description="The page that lists the members of the group",
-    long_description=open("README.txt").read() + "\n" +
-                    open(os.path.join("docs", "HISTORY.txt")).read(),
+    long_description=open("README.rst").read() + "\n" +
+                    open(os.path.join("docs", "HISTORY.rst")).read(),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         "Environment :: Web Environment",
