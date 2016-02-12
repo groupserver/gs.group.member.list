@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Copyright © 2013, 2014 OnlineGroups.net and Contributors. -->
+<!-- All Rights Reserved. -->
+
+<!-- This software is subject to the provisions of the Zope Public -->
+<!-- License, Version 2.1 (ZPL).  A copy of the ZPL should accompany this -->
+<!-- distribution. -->
+
+<!-- THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED -->
+<!-- WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED -->
+<!-- WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND -->
+<!-- FITNESS FOR A PARTICULAR PURPOSE. -->
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:browser="http://namespaces.zope.org/browser"
            i18n_domain="groupserver">
 
   <include package="zope.viewlet" file="meta.zcml" />
 
-  <browser:page 
+  <browser:page
     name="members.html"
     for="gs.group.base.interfaces.IGSGroupMarker"
     class="gs.group.base.page.GroupPage"
     template="browser/templates/members.pt"
     permission="zope2.View"/>
-    
+
   <browser:viewletManager
     name="groupserver.MembersList"
     for="gs.group.base.interfaces.IGSGroupMarker"
@@ -29,7 +40,7 @@
     template="browser/templates/simplemanager.pt"
     permission="zope2.View" />
 
-  <browser:viewlet 
+  <browser:viewlet
     name="gs-group-home-posting-recent"
     manager=".interfaces.IMemberList"
     template="browser/templates/recent.pt"
@@ -37,7 +48,7 @@
     permission="zope2.View"
     weight="10"
     title="Recently active" />
-  <browser:viewlet 
+  <browser:viewlet
     name="gs-group-home-posting-most"
     manager=".interfaces.IMemberList"
     template="browser/templates/most.pt"
@@ -45,7 +56,7 @@
     permission="zope2.View"
     weight="20"
     title="Most active" />
-  <browser:viewlet 
+  <browser:viewlet
     name="gs-group-home-members"
     manager=".interfaces.IMemberList"
     template="browser/templates/all.pt"
@@ -54,7 +65,7 @@
     weight="50"
     title="All" />
   <!--help-->
-  <browser:viewlet 
+  <browser:viewlet
     name="gs-group-members-list-help"
     manager="gs.help.interfaces.IUserHelp"
     template="browser/templates/help.pt"
