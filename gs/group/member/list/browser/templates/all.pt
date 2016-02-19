@@ -22,7 +22,7 @@
         </li>
       </tal:block>
     </ul>
-  </div><!--gs-group-members-all-admins-->  
+  </div><!--gs-group-members-all-admins-->
   <div id="gs-group-members-all-normal" role="region"
        aria-labelledby="gs-group-members-all-normal-h">
     <h2 id="gs-group-members-all-normal-h">Normal members</h2>
