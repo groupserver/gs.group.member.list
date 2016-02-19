@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright © 2013 OnlineGroups.net and Contributors.
+# Copyright © 2013, 2016 OnlineGroups.net and Contributors.
 # All Rights Reserved.
 #
 # This software is subject to the provisions of the Zope Public License,
@@ -12,12 +12,14 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals, print_function
+from operator import attrgetter
 from zope.cachedescriptors.property import Lazy
+from zope.component import createObject
+from gs.group.member.base import (AdminMembers, NormalMembers, InvitedMembers, )
 from gs.group.member.viewlet import MemberViewlet
 from gs.group.privacy.interfaces import IGSGroupVisibility
-from Products.GSGroupMember.groupMembersInfo import GSGroupMembersInfo
-from .postingmembers import RecentPostingUser, TopPostingUser
+from .postingmembers import (RecentPostingUser, TopPostingUser, )
 from .queries import MembersQuery
 
 
@@ -46,18 +48,14 @@ class AllMemberList(PostingMemberList):
         return retval
 
     def update(self):
-        members = GSGroupMembersInfo(self.context)
-        l = lambda u: u.name
-        self.managers = members.managers
-        self.ptnCoach = members.ptnCoach
-        self.admins = [a for a in self.managers + [self.ptnCoach] if a]
-        self.admins.sort(key=l)
-        # TODO: do this in GSGroupMembersInfo
-        skip = [m.id for m in self.admins]
-        self.normalMembers = [m for m in members.fullMembers
-                                if m.id not in skip]
-        self.normalMembers.sort(key=l)
-        self.invitedMembers = members.invitedMembers
+        n = NormalMembers(self.context)
+        self.normalMembers = sorted(n, key=attrgetter('name'))
+        ptnCoach = createObject('groupserver.UserFromId', self.context, n.ptnCoachId)
+        self.managers = AdminMembers(self.context)
+        admins = [a for a in self.managers]
+        admins.append(ptnCoach)
+        self.admins = sorted(admins, key=attrgetter('name'))
+        self.invitedMembers = sorted(InvitedMembers(self.context), key=attrgetter('name'))
 
 
 class ActiveMemberList(PostingMemberList):
@@ -68,11 +66,9 @@ class ActiveMemberList(PostingMemberList):
     @Lazy
     def recentPostingMembers(self):
         retval = []
-        ml = self.membersQuery.posting_authors(self.siteInfo.id,
-                                                self.groupInfo.id, limit=6)
+        ml = self.membersQuery.posting_authors(self.siteInfo.id, self.groupInfo.id, limit=6)
         for uid in ml:
-            pu = RecentPostingUser(self.context, uid, self.groupInfo,
-                                    self.siteInfo)
+            pu = RecentPostingUser(self.context, uid, self.groupInfo, self.siteInfo)
             retval.append(pu)
         return retval
 
@@ -91,11 +87,10 @@ class MostActiveMemberList(PostingMemberList):
     @Lazy
     def topPostingMembers(self):
         retval = []
-        tm = self.membersQuery.top_posting_authors(self.siteInfo.id,
-                                                   self.groupInfo.id, limit=6)
+        tm = self.membersQuery.top_posting_authors(self.siteInfo.id, self.groupInfo.id, limit=6)
         for m in tm:
-            pu = TopPostingUser(self.context, m['user_id'], self.groupInfo,
-                                self.siteInfo, m['post_count'])
+            pu = TopPostingUser(self.context, m['user_id'], self.groupInfo, self.siteInfo,
+                                m['post_count'])
             retval.append(pu)
         return retval
 
