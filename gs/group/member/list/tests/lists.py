@@ -15,7 +15,7 @@
 from __future__ import absolute_import, unicode_literals, print_function
 from mock import (MagicMock, patch, PropertyMock)
 from unittest import TestCase
-from gs.group.member.list.lists import (MostActiveMemberList, ActiveMemberList, )
+from gs.group.member.list.lists import (MostActiveMemberList, ActiveMemberList, AllMemberList, )
 
 
 class TestMostActiveMemberList(TestCase):
@@ -110,6 +110,51 @@ class TestActiveMemberList(TestCase):
         view = MagicMock()
         manager = MagicMock()
         l = ActiveMemberList(group, request, view, manager)
+        r = l.show
+
+        self.assertFalse(r)
+
+
+class TestAllMemberList(TestCase):
+
+    @patch.object(AllMemberList, 'isMember', new_callable=PropertyMock)
+    def test_show_member(self, m_iM):
+        'Test we show the members if viewer is a member'
+        m_iM.return_value = True
+        group = MagicMock()
+        request = MagicMock()
+        view = MagicMock()
+        manager = MagicMock()
+        l = AllMemberList(group, request, view, manager)
+        r = l.show
+
+        self.assertTrue(r)
+
+    @patch.object(AllMemberList, 'isMember', new_callable=PropertyMock)
+    @patch.object(AllMemberList, 'visibility', new_callable=PropertyMock)
+    def test_show_perms(self, m_v, m_iM):
+        m_iM.return_value = False
+        m_v().isSecret = False
+        group = MagicMock()
+        request = MagicMock()
+        view = MagicMock()
+        manager = MagicMock()
+        l = AllMemberList(group, request, view, manager)
+        r = l.show
+
+        self.assertTrue(r)
+
+    @patch.object(AllMemberList, 'isMember', new_callable=PropertyMock)
+    @patch.object(AllMemberList, 'visibility', new_callable=PropertyMock)
+    def test_show_secret(self, m_v, m_iM):
+        'Ensure the members are hidden with secret groups'
+        m_iM.return_value = False
+        m_v().isSecret = True
+        group = MagicMock()
+        request = MagicMock()
+        view = MagicMock()
+        manager = MagicMock()
+        l = AllMemberList(group, request, view, manager)
         r = l.show
 
         self.assertFalse(r)
