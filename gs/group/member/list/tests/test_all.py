@@ -16,10 +16,11 @@ from __future__ import absolute_import, unicode_literals
 from unittest import TestSuite, main as unittest_main
 from gs.group.member.list.tests.lists import (TestMostActiveMemberList, TestActiveMemberList,
                                               TestAllMemberList, )
-from gs.group.member.list.tests.postingmembers import (TestRecentPostingUser, TestTopPostingUser, )
+from gs.group.member.list.tests.postingmembers import (TestActiveUser, TestRecentPostingUser,
+                                                       TestTopPostingUser, )
 
 testCases = (TestMostActiveMemberList, TestActiveMemberList, TestAllMemberList,
-             TestRecentPostingUser, TestTopPostingUser, )
+             TestActiveUser, TestRecentPostingUser, TestTopPostingUser,)
 
 
 def load_tests(loader, tests, pattern):

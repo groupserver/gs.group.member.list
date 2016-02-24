@@ -15,7 +15,37 @@
 from __future__ import absolute_import, unicode_literals, print_function
 from mock import (MagicMock, patch, PropertyMock)
 from unittest import TestCase
-from gs.group.member.list.postingmembers import (RecentPostingUser, TopPostingUser, )
+from gs.group.member.list.postingmembers import (RecentPostingUser, TopPostingUser, ActiveUser)
+
+
+class TestActiveUser(TestCase):
+    @patch('gs.group.member.list.postingmembers.createObject')
+    def test_getattr_lookup(self, m_cO):
+        'Ensure we look up the user-info if the attribute is missing'
+        userInfo = m_cO()
+        userInfo.ethyl = 'the frog'
+        u = ActiveUser(MagicMock(), 'person', MagicMock(), MagicMock())
+        r = u.ethyl
+
+        self.assertEqual(r, 'the frog')
+
+    @patch('gs.group.member.list.postingmembers.createObject')
+    def test_getattr(self, m_cO):
+        'Ensure we look up attributes from ourself'
+        userInfo = m_cO()
+        u = ActiveUser(MagicMock(), 'person', MagicMock(), MagicMock())
+        r = u.userInfo
+
+        self.assertEqual(r, userInfo)
+
+    @patch('gs.group.member.list.postingmembers.createObject')
+    def test_getattr_missing(self, m_cO):
+        'Ensure we can have missing attributes'
+        userInfo = m_cO()
+        del(userInfo.ethyl)
+        u = ActiveUser(MagicMock(), 'person', MagicMock(), MagicMock())
+        with self.assertRaises(AttributeError):
+            u.ethyl
 
 
 class TestRecentPostingUser(TestCase):
