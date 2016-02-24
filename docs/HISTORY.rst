@@ -8,6 +8,7 @@ Changelog
 * Following the update to `gs.group.member.base`_
 * Naming the reStructuredText files as such
 * Pointing at GitHub_ as the canonical code repository
+* Adding unit tests
 
 .. _GitHub: https://github.com/groupserver/gs.group.member.base
 
