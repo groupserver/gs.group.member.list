@@ -1,6 +1,16 @@
 Changelog
 =========
 
+2.1.0 (2016-02-24)
+------------------
+
+* Adding internationalisation support
+* Following the update to `gs.group.member.base`_
+* Naming the reStructuredText files as such
+* Pointing at GitHub_ as the canonical code repository
+
+.. _GitHub: https://github.com/groupserver/gs.group.member.base
+
 2.0.0 (2013-09-19)
 ------------------
 
