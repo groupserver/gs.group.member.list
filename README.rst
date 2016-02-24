@@ -1,9 +1,9 @@
 ========================
 ``gs.group.member.list``
 ========================
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-List the members of a GroupServer group
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Lists of the members of a GroupServer group
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :Author: `Michael JasonSmith`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
@@ -81,6 +81,9 @@ The ``gs.group.member.list.MembersQuery`` class provides two methods.
 Resources
 =========
 
+
+- Translations:
+  https://www.transifex.com/projects/p/gs-group-member-list/
 - Code repository:
   https://github.com/groupserver/gs.group.member.list
 - Questions and comments to
