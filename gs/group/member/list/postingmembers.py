@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright © 2013 OnlineGroups.net and Contributors.
+# Copyright © 2013, 2016 OnlineGroups.net and Contributors.
 # All Rights Reserved.
 #
 # This software is subject to the provisions of the Zope Public License,
@@ -12,7 +12,7 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals, print_function
 from urllib import urlencode
 from zope.cachedescriptors.property import Lazy
 from zope.component import createObject
@@ -33,10 +33,15 @@ class ActiveUser(object):
         return retval
 
     def __getattr__(self, name):
-        return getattr(self.userInfo, name)
+        try:
+            retval = self.__dict__[name]
+        except KeyError:
+            retval = getattr(self.userInfo, name)
+        return retval
 
 
 class RecentPostingUser(ActiveUser):
+
     @Lazy
     def latestPost(self):
         mq = MessageQuery(self.group)
