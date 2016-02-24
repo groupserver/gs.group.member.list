@@ -1,5 +1,9 @@
-<div id="gs-group-member-list-most">
-  <p class="muted">Members who have made the most posts</p>
+<div id="gs-group-member-list-most"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     i18n:domain="gs.group.member.list">
+  <p i18n:translate="most-intro"
+     class="muted intro">Members who have made the most posts</p>
   <ul>
     <tal:block repeat="member view/topPostingMembers">
       <li class="vcard">
@@ -16,7 +20,9 @@
           </li>
           <li class="muted small">
             <a tal:attributes="href member/searchUrl"
-               href="#"><span class="val" tal:content="member/nPosts">n</span>
+               i18n:translate="most-number"
+               href="#"><span class="val" tal:content="member/nPosts"
+                              i18n:name="numPosts">n</span>
           posts</a></li>
         </ul>
       </li>

@@ -1,5 +1,9 @@
-<div id="gs-group-member-list-recent">
-  <p class="muted">Members who recently made a post</p>
+<div id="gs-group-member-list-recent"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     i18n:domain="gs.group.member.list">
+  <p class="muted intro"
+     i18n:translate="recent-intro">Members who recently made a post</p>
   <ul
     tal:define="munge_date python:modules['Products.XWFCore.XWFUtils'].munge_date;
                 ctx view/context">
@@ -18,8 +22,9 @@
           </li>
           <li class="muted small">
               <a href="#"
-                 tal:attributes="href member/postUrl">Posted
-              <span class="date published"
+                 tal:attributes="href member/postUrl"
+                 i18n:translate="recent-member-date">Posted
+              <span class="date published" i18n:name="date"
                     tal:define="d member/latestPost/date"
                     tal:content="python:munge_date(ctx, d)">Date</span></a>
           </li>

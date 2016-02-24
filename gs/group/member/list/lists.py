@@ -21,9 +21,11 @@ from gs.group.member.viewlet import MemberViewlet
 from gs.group.privacy.interfaces import IGSGroupVisibility
 from .postingmembers import (RecentPostingUser, TopPostingUser, )
 from .queries import MembersQuery
+from . import GSMessageFactory as _
 
 
 class PostingMemberList(MemberViewlet):
+
     def __init__(self, group, request, view, manager):
         super(PostingMemberList, self).__init__(group, request, view, manager)
 
@@ -36,6 +38,7 @@ class PostingMemberList(MemberViewlet):
 class AllMemberList(PostingMemberList):
     def __init__(self, group, request, view, manager):
         super(AllMemberList, self).__init__(group, request, view, manager)
+        self.title = _('members-tab-title', 'All')
 
     @Lazy
     def visibility(self):
@@ -62,6 +65,7 @@ class ActiveMemberList(PostingMemberList):
 
     def __init__(self, group, request, view, manager):
         super(ActiveMemberList, self).__init__(group, request, view, manager)
+        self.title = _('recent-tab-title', 'Recently active')
 
     @Lazy
     def recentPostingMembers(self):
@@ -81,8 +85,8 @@ class ActiveMemberList(PostingMemberList):
 class MostActiveMemberList(PostingMemberList):
 
     def __init__(self, group, request, view, manager):
-        super(MostActiveMemberList,
-              self).__init__(group, request, view, manager)
+        super(MostActiveMemberList, self).__init__(group, request, view, manager)
+        self.title = _('most-tab-title', 'Most active')
 
     @Lazy
     def topPostingMembers(self):

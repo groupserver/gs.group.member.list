@@ -53,8 +53,7 @@ class RecentPostingUser(ActiveUser):
     @Lazy
     def postUrl(self):
         r = '{groupUrl}/messages/post/{postId}'
-        retval = r.format(groupUrl=self.groupInfo.relativeURL,
-                            postId=self.latestPost['post_id'])
+        retval = r.format(groupUrl=self.groupInfo.relativeURL, postId=self.latestPost['post_id'])
         return retval
 
 

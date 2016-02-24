@@ -1,7 +1,9 @@
-<html 
+<html
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:tal="http://xml.zope.org/namespaces/tal"
   xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="gs.group.member.list"
   metal:use-macro="context/@@groupserver_layout/page">
   <head>
     <title metal:fill-slot="title">Members:
@@ -19,15 +21,15 @@
         </a>
       </li>
       <li>
-        <a class="group" 
+        <a class="group"
            tal:attributes="href string:${view/groupInfo/relativeURL}/">
           <strong
             tal:content="view/groupInfo/name">This group</strong></a>
       </li>
-      <li>Members</li>
+      <li i18n:translate="members">Members</li>
     </ul>
     <div metal:fill-slot="body" id="gs-group-member-list">
-      <h1>Members</h1>
+      <h1 i18n:translate="members">Members</h1>
       <p
         tal:replace="structure provider:groupserver.MembersList">
         The member tabs.
@@ -41,4 +43,3 @@
     </tal:block>
   </body>
 </html>
-

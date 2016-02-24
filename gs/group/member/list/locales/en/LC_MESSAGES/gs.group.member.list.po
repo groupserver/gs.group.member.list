@@ -1,0 +1,91 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2016-02-24 17:50+0000\n"
+"PO-Revision-Date: 2016-02-24 09:53-0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#. Default: "Members"
+#: ./browser/templates/members.pt:29
+msgid "members"
+msgstr "Members"
+
+#. Default: "Group administrator"
+#: ./browser/templates/all.pt:23
+msgid "members-admins-group"
+msgstr "Group administrator"
+
+#. Default: "Administrators"
+#: ./browser/templates/all.pt:7
+msgid "members-admins-h"
+msgstr "Administrators"
+
+#. Default: "Participation coach"
+#: ./browser/templates/all.pt:27
+msgid "members-admins-ptn-coach"
+msgstr "Participation coach"
+
+#. Default: "The people that are yet to respond to the invitation to join ${groupName}."
+#: ./browser/templates/all.pt:70
+msgid "members-invited-desc"
+msgstr "The people that are yet to respond to the invitation to join ${groupName}."
+
+#. Default: "Invited members"
+#: ./browser/templates/all.pt:65
+msgid "members-invited-h"
+msgstr "Invited members"
+
+#. Default: "You must be logged in to see the list of normal group members."
+#: ./browser/templates/all.pt:57
+msgid "members-logged-out"
+msgstr "You must be signed in to see the list of normal group members."
+
+#. Default: "Normal members"
+#: ./browser/templates/all.pt:39
+msgid "members-normal-h"
+msgstr "Normal members"
+
+#. Default: "All"
+#: ./lists.py:41
+msgid "members-tab-title"
+msgstr "All"
+
+#. Default: "Members who have made the most posts"
+#: ./browser/templates/most.pt:5
+msgid "most-intro"
+msgstr "Members who have made the most posts"
+
+#. Default: "${numPosts} posts"
+#: ./browser/templates/most.pt:24
+msgid "most-number"
+msgstr "${numPosts} posts"
+
+#. Default: "Most active"
+#: ./lists.py:89
+msgid "most-tab-title"
+msgstr "Most active"
+
+#. Default: "Members who recently made a post"
+#: ./browser/templates/recent.pt:5
+msgid "recent-intro"
+msgstr "Members who recently made a post"
+
+#. Default: "Posted ${date}"
+#: ./browser/templates/recent.pt:27
+msgid "recent-member-date"
+msgstr "Posted ${date}"
+
+#. Default: "Recently active"
+#: ./lists.py:68
+msgid "recent-tab-title"
+msgstr "Recently active"
+

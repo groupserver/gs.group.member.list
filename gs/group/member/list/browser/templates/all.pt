@@ -1,7 +1,11 @@
-<tal:block>
+<tal:block xmlns:tal="http://xml.zope.org/namespaces/tal"
+           xmlns:metal="http://xml.zope.org/namespaces/metal"
+           xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+           i18n:domain="gs.group.member.list">
   <div id="gs-group-members-all-admins" role="region"
        aria-labelledby="gs-group-members-all-admins-h">
-    <h2 id="gs-group-members-all-admins-h">Administrators</h2>
+    <h2 id="gs-group-members-all-admins-h"
+        i18n:translate="members-admins-h">Administrators</h2>
     <ul>
       <tal:block repeat="member view/admins">
         <li class="vcard">
@@ -16,8 +20,15 @@
                      href="#"><strong tal:content="member/name"
                                       class="fn" >A member</strong></a>
               </li>
+              <li class="muted small" i18n:translate="members-admins-group"
+                  tal:condition="python:member in view.managers">
+                Group administrator
+              </li>
               <li class="muted small"
-                  tal:content="python:(member in view.managers) and 'Group Administrator' or 'Participation Coach'">Batman</li>
+                  i18n:translate="members-admins-ptn-coach"
+                  tal:condition="python:member not in view.managers">
+                Participation coach
+              </li>
             </ul>
         </li>
       </tal:block>
@@ -25,7 +36,8 @@
   </div><!--gs-group-members-all-admins-->
   <div id="gs-group-members-all-normal" role="region"
        aria-labelledby="gs-group-members-all-normal-h">
-    <h2 id="gs-group-members-all-normal-h">Normal members</h2>
+    <h2 id="gs-group-members-all-normal-h"
+        i18n:translate="members-normal-h">Normal members</h2>
     <ul tal:condition="python:view.isMember or view.visibility.isPublic">
       <tal:block repeat="member view/normalMembers">
         <li class="vcard">
@@ -37,22 +49,26 @@
           </a>
           <ul>
             <li><a href="#" class="fn url" tal:content="member/name"
-              tal:attributes="href member/url">A member</a></li>
+                   tal:attributes="href member/url">A. Member</a></li>
           </ul>
         </li>
       </tal:block>
     </ul>
-    <p tal:condition="python:not(view.isMember or view.visibility.isPublic)">
+    <p tal:condition="python:not(view.isMember or view.visibility.isPublic)"
+       i18n:translate="members-logged-out">
       You must be logged in to see the list of normal group members.
     </p>
   </div><!--gs-group-members-all-normal-->
   <div id="gs-group-members-all-invited" role="region"
        aria-labelledby="gs-group-members-all-invited-h"
        tal:condition="python:not(view.visibility.isPublic) and view.isMember">
-    <h2 id="gs-group-members-all-invited-h">Invited members</h2>
-    <p class="muted">
+    <h2 id="gs-group-members-all-invited-h"
+        i18n:translate="members-invited-h">Invited members</h2>
+    <p class="muted"
+       i18n:translate="members-invited-desc">
       The people that are yet to respond to the invitation to join
-      <span class="group" tal:content="view/groupInfo/name">this group</span>.
+      <span class="group" i18n:name="groupName"
+            tal:content="view/groupInfo/name">this group</span>.
     </p>
     <ul>
       <tal:block repeat="member view/invitedMembers">
@@ -64,7 +80,7 @@
           <ul>
             <li>
               <a href="#" class="fn url" tal:content="member/name"
-                 tal:attributes="href member/url">A member</a>
+                 tal:attributes="href member/url">A. Member</a>
             </li>
           </ul>
         </li>

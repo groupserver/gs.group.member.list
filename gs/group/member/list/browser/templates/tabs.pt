@@ -1,4 +1,5 @@
-<div id="gs-group-member-list-tabs" role="presentation">
+<div id="gs-group-member-list-tabs" role="presentation"
+     xmlns:tal="http://xml.zope.org/namespaces/tal">
   <ul id="gs-group-members-list-tabs-buttons" class="nav nav-tabs"
       role="tablist">
     <tal:block repeat="viewlet options/viewlets">
